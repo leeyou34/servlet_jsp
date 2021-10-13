@@ -35,6 +35,7 @@ public class FileUploadServlet extends HttpServlet{
 		out.println("<html><head><title>Multipart Test</title></head><body>");
 		
 		try {
+			//web서버의 컨텍스트 루트 패스를 얻어옴 : http://localhost:9999/WebContent
 			String contextRootPath = this.getServletContext().getRealPath("/");
 			System.out.println("contextRootPath : " + contextRootPath);
 			
@@ -70,7 +71,9 @@ public class FileUploadServlet extends HttpServlet{
 		long fileSize = item.getSize();
 		
 		String uploadedFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
-		File folder = new File(contextRootPath + "/uplaod");
+		
+		//실제 경로에 폴더가 없으면 추가
+		File folder = new File(contextRootPath + "/upload");
 		if(!folder.exists()) {
 			folder.mkdir();
 		}

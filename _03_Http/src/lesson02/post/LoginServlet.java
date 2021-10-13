@@ -14,23 +14,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		
 		out.println("<html><body>");
-		if(pw.equals("1111")) {
+		if(pw.contentEquals("1111")) {
 			out.println("<h1>로그인 결과</h1>");
 			out.println("<strong>" + id + "</strong> 님을 환영합니다.");
 		} else {
